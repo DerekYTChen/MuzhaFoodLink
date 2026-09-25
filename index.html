@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Nanum+Pen+Script&family=Noto+Serif+TC:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -132,6 +132,10 @@
 <text class="m-lbl m-lbl-soft" x="600" y="812" text-anchor="middle" data-i18n="map.lbl.campus"></text>
 <text class="m-lbl m-lbl-route" x="511" y="436" text-anchor="end" data-i18n="map.lbl.route"></text>
           </svg>
+          <div class="pk-bar">
+            <button type="button" class="pk-toggle" id="pk-toggle" aria-pressed="false"
+                    aria-controls="pk-caveat"><i class="lg-pk" aria-hidden="true"></i><span data-i18n="map.pk.btn"></span></button>
+          </div>
           <div class="map-legend">
             <span><i class="lg lg-route"></i> <span data-i18n="map.lg.route"></span></span>
             <span><i class="lg lg-pin"></i> <span data-i18n="map.lg.pin"></span></span>
@@ -140,11 +144,7 @@
             <span><i class="lg lg-campus"></i> <span data-i18n="map.lg.campus"></span></span>
             <span><i class="lg lg-pk"></i> <span data-i18n="map.pk.lg"></span></span>
           </div>
-          <div class="pk-bar">
-            <button type="button" class="pk-toggle" id="pk-toggle" aria-pressed="false"
-                    aria-controls="pk-caveat"><i class="lg-pk" aria-hidden="true"></i><span data-i18n="map.pk.btn"></span></button>
-            <p class="pk-caveat" id="pk-caveat" data-i18n="map.pk.caveat" hidden></p>
-          </div>
+          <p class="pk-caveat" id="pk-caveat" data-i18n="map.pk.caveat" hidden></p>
         </div>
 
         <aside class="map-list" aria-labelledby="stops-title">

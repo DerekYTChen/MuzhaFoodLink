@@ -120,7 +120,7 @@ em{font-style:italic;color:var(--coral)}
   align-items:end;margin-bottom:32px}
 .map-sub{margin:0;font-size:14px;color:var(--ink-soft)}
 .map-shell{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:clamp(20px,3vw,44px);align-items:start}
-.map-canvas{position:relative;background:var(--cream);border:1.5px solid var(--ink);border-radius:20px;padding:14px;overflow:hidden}
+.map-canvas{background:var(--cream);border:1.5px solid var(--ink);border-radius:20px;padding:14px;overflow:hidden}
 .food-map{display:block;width:100%;height:auto;background:#f8f2df;border-radius:12px}
 .m-water path{fill:none;stroke:var(--water);stroke-width:5;stroke-linecap:round;opacity:.85}
 .m-water .m-lake{fill:var(--water);stroke:none;opacity:.7}
@@ -137,12 +137,12 @@ em{font-style:italic;color:var(--coral)}
 .m-pk-dot circle{fill:var(--cream)}
 .pk-toggle{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--ink);
   background:var(--cream);color:var(--ink);border-radius:999px;padding:.42rem .9rem;
-  font:600 .78rem/1 "Work Sans",sans-serif;cursor:pointer;box-shadow:0 2px 0 rgba(35,31,28,.18)}
+  font:600 .78rem/1 "Work Sans",sans-serif;cursor:pointer}
 .pk-toggle[aria-pressed="true"]{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 .pk-toggle .lg-pk{width:.72rem;height:.72rem;border-radius:50%;background:var(--coral);
   border:1.5px solid currentColor;flex:none}
-.pk-bar{position:absolute;top:26px;right:26px;z-index:2}
-.pk-caveat{margin:.8rem 0 0;font:400 .72rem/1.55 "Work Sans",sans-serif;opacity:.72;max-width:70ch}
+.pk-bar{margin:.7rem 0 0}
+.pk-caveat{margin:.55rem 0 0;font:400 .72rem/1.5 "Work Sans",sans-serif;opacity:.72;max-width:52ch}
 .pk-caveat[hidden]{display:none!important}
 /* decorative flora: ornament only, carries no data */
 .m-flora{opacity:.62}
@@ -270,10 +270,6 @@ footer{background:var(--ink);color:#e6dcc6;display:flex;flex-wrap:wrap;gap:12px 
   .hero-art{max-width:400px;order:-1}
   .stat-row{grid-template-columns:1fr 1fr}
   .m-lbl{font-size:21px}
-}
-@media (max-width:640px){
-  .pk-bar{position:static;top:auto;right:auto;margin:.7rem 0 0}
-  .pk-toggle{width:100%;justify-content:center}
 }
 @media (max-width:560px){
   body{font-size:16px}
