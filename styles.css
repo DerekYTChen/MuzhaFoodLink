@@ -127,11 +127,6 @@ em{font-style:italic;color:var(--coral)}
 .m-zoo{fill:var(--zoo);stroke:var(--moss);stroke-width:2;stroke-dasharray:7 5;opacity:.85}
 .m-campus path{fill:#e8ddbe;stroke:#b9a878;stroke-width:1.5;opacity:.9}
 /* shuttered units: the fact the business case opens on, so always visible */
-.m-vac-halo{fill:var(--ink);opacity:.07}
-.m-vac-ring{fill:var(--cream);stroke:var(--ink);stroke-width:1.6;stroke-dasharray:4 3;opacity:.9}
-.m-vac-x{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;opacity:.78}
-.lg-vac{background:var(--cream);border:1.5px dashed var(--ink);width:11px;height:11px;border-radius:50%}
-.vac-note{margin:.85rem 0 0;font:400 .72rem/1.55 "Work Sans",sans-serif;opacity:.72;max-width:70ch}
 /* Pikmin Bloom observed-activity layer (off by default, toggled) */
 .m-pikmin{display:none}
 .food-map.show-pk .m-pikmin{display:block}
@@ -212,7 +207,7 @@ em{font-style:italic;color:var(--coral)}
 .watch-heading{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3vw,48px);
   align-items:end;margin-bottom:40px}
 .watch-sub{margin:0;font-size:14px;color:#e6dcc6cc}
-.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:20px}
 .qr-card{display:grid;grid-template-columns:auto 1fr;gap:16px;background:#2e2925;border:1px solid #fff1a;
   border-radius:14px;padding:16px}
 .qr-code{display:block;background:var(--cream);border-radius:8px;padding:6px;line-height:0;height:fit-content}

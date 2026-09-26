@@ -135,7 +135,8 @@
     var cav = document.getElementById("pk-caveat");
     var svg = document.querySelector(".food-map");
     if (!btn || !svg) return;
-    var on = localStorage.getItem("mfl-pikmin") === "on";
+    var on = false;
+    try { on = localStorage.getItem("mfl-pikmin") === "on"; } catch (e) {}
     function sync() {
       svg.classList.toggle("show-pk", on);
       btn.setAttribute("aria-pressed", on ? "true" : "false");
