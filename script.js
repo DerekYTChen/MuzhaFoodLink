@@ -69,21 +69,83 @@
 
   /* ---------- map <-> list linking ---------- */
   function linkMap() {
-    var pins = document.querySelectorAll(".m-pin");
-    var items = document.querySelectorAll(".stop-list li");
-    function set(n, on) {
-      pins.forEach(function (p) { if (p.getAttribute("data-stop") === n) p.classList.toggle("is-active", on); });
-      items.forEach(function (li) { if (li.getAttribute("data-stop") === n) li.classList.toggle("is-active", on); });
+    var pins = Array.prototype.slice.call(document.querySelectorAll(".m-pin"));
+    var items = Array.prototype.slice.call(document.querySelectorAll(".stop-list li"));
+    var viewport = document.querySelector(".map-viewport");
+    var status = document.getElementById("map-status");
+    var hovered = null, chosen = null;
+
+    function find(list, n) {
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].getAttribute("data-stop") === n) return list[i];
+      }
+      return null;
     }
-    function wire(el) {
+    /* hover is transient, chosen persists, so a click survives the pointer
+       leaving the row: that is the whole point of "follow the list". */
+    function paint() {
+      pins.concat(items).forEach(function (el) {
+        var n = el.getAttribute("data-stop");
+        el.classList.toggle("is-active", n === hovered);
+        el.classList.toggle("is-chosen", n === chosen);
+      });
+      items.forEach(function (li) {
+        li.setAttribute("aria-pressed", li.getAttribute("data-stop") === chosen ? "true" : "false");
+      });
+    }
+    function behavior() {
+      var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      return reduced ? "auto" : "smooth";
+    }
+    /* Feature-test the scroll container instead of repeating the CSS
+       breakpoint: when the map has its own scrollbar, move it; otherwise
+       centre the pin in the window, which is what phones need. */
+    function reveal(n) {
+      var pin = find(pins, n);
+      if (!pin) return;
+      var how = behavior();
+      var box = pin.getBoundingClientRect();
+      if (viewport && viewport.scrollHeight > viewport.clientHeight + 2) {
+        var frame = viewport.getBoundingClientRect();
+        var top = viewport.scrollTop + box.top - frame.top - (viewport.clientHeight - box.height) / 2;
+        viewport.scrollTo({ top: Math.max(0, top), behavior: how });
+      } else {
+        var y = window.pageYOffset + box.top + box.height / 2 - window.innerHeight / 2;
+        window.scrollTo({ top: Math.max(0, y), behavior: how });
+      }
+    }
+    function announce(n) {
+      if (!status) return;
+      var d = DICT[document.body.classList.contains("lang-zh") ? "zh" : "en"] || DICT.en;
+      var tpl = d["map.revealed"];
+      if (!tpl) return;
+      var li = find(items, n);
+      var name = li && li.querySelector("b") ? li.querySelector("b").textContent : n;
+      status.textContent = tpl.replace("{n}", n).replace("{name}", name);
+    }
+    function choose(n) { chosen = n; paint(); reveal(n); announce(n); }
+
+    function wire(el, isList) {
       var n = el.getAttribute("data-stop");
-      el.addEventListener("mouseenter", function () { set(n, true); });
-      el.addEventListener("mouseleave", function () { set(n, false); });
-      el.addEventListener("focus", function () { set(n, true); });
-      el.addEventListener("blur", function () { set(n, false); });
+      el.addEventListener("mouseenter", function () { hovered = n; paint(); });
+      el.addEventListener("mouseleave", function () { if (hovered === n) { hovered = null; paint(); } });
+      el.addEventListener("click", function () { choose(n); });
+      if (isList) {
+        el.setAttribute("tabindex", "0");
+        el.setAttribute("role", "button");
+        el.setAttribute("aria-pressed", "false");
+        el.addEventListener("focus", function () { hovered = n; paint(); });
+        el.addEventListener("blur", function () { if (hovered === n) { hovered = null; paint(); } });
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            choose(n);
+          }
+        });
+      }
     }
-    pins.forEach(wire);
-    items.forEach(function (li) { li.setAttribute("tabindex", "0"); wire(li); });
+    pins.forEach(function (pin) { wire(pin, false); });
+    items.forEach(function (li) { wire(li, true); });
   }
 
   /* ---------- background score ---------- */

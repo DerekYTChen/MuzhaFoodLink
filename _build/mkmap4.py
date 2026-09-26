@@ -255,7 +255,7 @@ o=[]
 o.append('<g class="m-pins">')
 for n,x,y in pts:
     bx,by=bub[n]
-    o.append(f'<g class="m-pin" data-stop="{n}" tabindex="0">'
+    o.append(f'<g class="m-pin" data-stop="{n}">'
       f'<circle class="m-pin-hit" cx="{bx:.0f}" cy="{by:.0f}" r="23"/>'
       f'<line class="m-pin-leader" x1="{x:.0f}" y1="{y:.0f}" x2="{bx:.0f}" y2="{by:.0f}"/>'
       f'<circle class="m-pin-here" cx="{x:.0f}" cy="{y:.0f}" r="4"/>'
