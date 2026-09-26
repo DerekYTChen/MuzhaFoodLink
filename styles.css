@@ -124,8 +124,9 @@ em{font-style:italic;color:var(--coral)}
 .map-viewport{overflow:auto;scroll-behavior:smooth;border-radius:12px;background:#f8f2df}
 .food-map{display:block;width:100%;height:auto;background:#f8f2df;border-radius:12px}
 @media (min-width:1041px){
-  .map-canvas{position:sticky;top:18px}
-  .map-viewport{max-height:calc(100vh - 170px)}
+  /* The map follows the list, but must begin below the sticky site header. */
+  .map-canvas{position:sticky;top:84px}
+  .map-viewport{max-height:calc(100vh - 120px)}
 }
 @media (prefers-reduced-motion:reduce){.map-viewport{scroll-behavior:auto}}
 .m-water path{fill:none;stroke:var(--water);stroke-width:5;stroke-linecap:round;opacity:.85}
