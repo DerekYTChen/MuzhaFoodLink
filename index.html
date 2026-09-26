@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Nanum+Pen+Script&family=Noto+Serif+TC:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -17,8 +17,9 @@
     <a class="brand" href="#top"><span class="brand-sun">✳</span><span class="brand-name" data-i18n="brand"></span></a>
     <nav aria-label="Primary">
       <a href="#idea" data-i18n="nav.idea"></a>
+      <a href="#season" data-i18n="nav.season"></a>
       <a href="#map" data-i18n="nav.map"></a>
-      <a href="#watch" data-i18n="nav.watch"></a>
+      <a href="#method" data-i18n="nav.method"></a>
       <a href="#plan" data-i18n="nav.plan"></a>
       <a href="#join" data-i18n="nav.join"></a>
     </nav>
@@ -61,6 +62,14 @@
       <a href="#plan"><span data-i18n="strip.cta"></span> <span aria-hidden="true">↗</span></a>
     </section>
 
+    <section class="about-note section">
+      <div class="about-card">
+        <p class="about-label" data-i18n="about.label"></p>
+        <p class="about-text" data-i18n="about.text"></p>
+        <p class="about-who" data-i18n="about.who"></p>
+      </div>
+    </section>
+
     <section class="story section" aria-labelledby="story-title">
       <div class="section-kicker" data-i18n="story.kicker"></div>
       <div class="story-layout">
@@ -74,6 +83,113 @@
         <div><strong data-i18n="story.s1v"></strong><span data-i18n="story.s1l"></span></div>
         <div><strong data-i18n="story.s2v"></strong><span data-i18n="story.s2l"></span></div>
         <div><strong data-i18n="story.s3v"></strong><span data-i18n="story.s3l"></span></div>
+      </div>
+    </section>
+
+    <section class="season section" id="season" aria-labelledby="season-title">
+      <div class="map-heading">
+        <div><p class="section-kicker" data-i18n="season.kicker"></p><h2 id="season-title" data-i18n="season.h2"></h2></div>
+        <div class="season-body">
+          <p data-i18n="season.p1"></p>
+          <p data-i18n="season.p2"></p>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-scroll">
+<svg class="season-chart" viewBox="0 0 1000 340" role="img" aria-labelledby="sc-title sc-desc">
+  <title id="sc-title" data-i18n="season.svgTitle"></title>
+  <desc id="sc-desc" data-i18n="season.svgDesc"></desc>
+  <g class="sc-grid">
+    <line x1="46" y1="207.3" x2="982" y2="207.3"/>
+    <text class="sc-ax" x="38" y="211.3">100</text>
+    <line x1="46" y1="120.7" x2="982" y2="120.7"/>
+    <text class="sc-ax" x="38" y="124.7">200</text>
+    <line x1="46" y1="34.0" x2="982" y2="34.0"/>
+    <text class="sc-ax" x="38" y="38.0">300</text>
+  </g>
+  <g class="sc-bars">
+    <rect class="sc-bar sc-hi" x="62.4" y="68.3" width="45.2" height="225.7" rx="3"/>
+    <text class="sc-val sc-valhi" x="85.0" y="59.3">260</text>
+    <text class="sc-mon sc-monhi" x="85.0" y="316.0">1</text>
+    <rect class="sc-bar sc-hi" x="140.4" y="60.3" width="45.2" height="233.7" rx="3"/>
+    <text class="sc-val sc-valhi" x="163.0" y="51.3">270</text>
+    <text class="sc-mon sc-monhi" x="163.0" y="316.0">2</text>
+    <rect class="sc-bar" x="218.4" y="73.6" width="45.2" height="220.4" rx="3"/>
+    <text class="sc-val" x="241.0" y="64.6">254</text>
+    <text class="sc-mon" x="241.0" y="316.0">3</text>
+    <rect class="sc-bar" x="296.4" y="82.7" width="45.2" height="211.3" rx="3"/>
+    <text class="sc-val" x="319.0" y="73.7">244</text>
+    <text class="sc-mon" x="319.0" y="316.0">4</text>
+    <rect class="sc-bar" x="374.4" y="120.8" width="45.2" height="173.2" rx="3"/>
+    <text class="sc-val" x="397.0" y="111.8">200</text>
+    <text class="sc-mon" x="397.0" y="316.0">5</text>
+    <rect class="sc-bar" x="452.4" y="200.1" width="45.2" height="93.9" rx="3"/>
+    <text class="sc-val" x="475.0" y="191.1">108</text>
+    <text class="sc-mon" x="475.0" y="316.0">6</text>
+    <rect class="sc-bar" x="530.4" y="140.0" width="45.2" height="154.0" rx="3"/>
+    <text class="sc-val" x="553.0" y="131.0">178</text>
+    <text class="sc-mon" x="553.0" y="316.0">7</text>
+    <rect class="sc-bar" x="608.4" y="106.5" width="45.2" height="187.5" rx="3"/>
+    <text class="sc-val" x="631.0" y="97.5">216</text>
+    <text class="sc-mon" x="631.0" y="316.0">8</text>
+    <rect class="sc-bar" x="686.4" y="175.3" width="45.2" height="118.7" rx="3"/>
+    <text class="sc-val" x="709.0" y="166.3">137</text>
+    <text class="sc-mon" x="709.0" y="316.0">9</text>
+    <rect class="sc-bar" x="764.4" y="124.1" width="45.2" height="169.9" rx="3"/>
+    <text class="sc-val" x="787.0" y="115.1">196</text>
+    <text class="sc-mon" x="787.0" y="316.0">10</text>
+    <rect class="sc-bar" x="842.4" y="81.8" width="45.2" height="212.2" rx="3"/>
+    <text class="sc-val" x="865.0" y="72.8">245</text>
+    <text class="sc-mon" x="865.0" y="316.0">11</text>
+    <rect class="sc-bar" x="920.4" y="84.1" width="45.2" height="209.9" rx="3"/>
+    <text class="sc-val" x="943.0" y="75.1">242</text>
+    <text class="sc-mon" x="943.0" y="316.0">12</text>
+  </g>
+  <g class="sc-avg">
+    <line x1="46" y1="109.8" x2="982" y2="109.8"/>
+    <text class="sc-avgv" x="982" y="101.8">213</text>
+  </g>
+  <line class="sc-base" x1="46" y1="294.0" x2="982" y2="294.0"/>
+</svg>
+
+        </div>
+        <div class="chart-legend">
+          <span><i class="lg lg-hi"></i> <span data-i18n="season.legendHi"></span></span>
+          <span><i class="lg lg-avg"></i> <span data-i18n="season.legendAvg"></span></span>
+        </div>
+        <p class="chart-cap" data-i18n="season.cap"></p>
+        <p class="chart-src"><a href="https://www.zoo.gov.taipei/News.aspx?n=5106BA427B3FB592&amp;sms=61B3A9CF957A6445" target="_blank" rel="noopener"><span data-i18n="season.src"></span> <span aria-hidden="true">↗</span></a></p>
+      </div>
+
+      <div class="stat-row">
+        <div><strong data-i18n="season.s1v"></strong><span data-i18n="season.s1l"></span></div>
+        <div><strong data-i18n="season.s2v"></strong><span data-i18n="season.s2l"></span></div>
+        <div><strong data-i18n="season.s3v"></strong><span data-i18n="season.s3l"></span></div>
+      </div>
+
+      <div class="sizing">
+        <div class="sizing-head">
+          <p class="section-kicker" data-i18n="size.kicker"></p>
+          <h3 data-i18n="size.t"></h3>
+          <p class="sizing-lead" data-i18n="size.p1"></p>
+        </div>
+        <div class="size-scroll">
+<table class="size-table">
+  <thead><tr>
+    <th data-i18n="size.h1"></th><th data-i18n="size.h2"></th>
+    <th data-i18n="size.h3"></th><th data-i18n="size.h4"></th>
+  </tr></thead>
+  <tbody>
+    <tr class="size-floor"><td>0.1%</td><td>171</td><td>NT$85,500</td><td>5</td></tr>
+    <tr><td>0.5%</td><td>855</td><td>NT$427,500</td><td>24</td></tr>
+    <tr><td>1%</td><td>1,710</td><td>NT$855,000</td><td>47</td></tr>
+  </tbody>
+</table>
+
+        </div>
+        <p class="size-note" data-i18n="size.note"></p>
+        <p class="size-rule" data-i18n="size.floor"></p>
       </div>
     </section>
 
@@ -99,6 +215,11 @@
 <g class="m-route"><path d="M509 625L391 601L374 596L377 541L374 436L383 320L393 300L412 285L543 200L545 197L626 143"/></g>
 <g class="m-pikmin"><g class="m-pk m-pk-l3"><title>動物園 / Taipei Zoo</title><circle class="m-pk-halo" cx="476" cy="258" r="46"/><circle class="m-pk-ring" cx="476" cy="258" r="46"/><g transform="translate(476,265) scale(1.74)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l3"><title>外埔 / Waipu / NCCU</title><circle class="m-pk-halo" cx="575" cy="724" r="46"/><circle class="m-pk-ring" cx="575" cy="724" r="46"/><g transform="translate(575,731) scale(1.74)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l2"><title>頂店 / Dingdian</title><circle class="m-pk-halo" cx="224" cy="555" r="32"/><circle class="m-pk-ring" cx="224" cy="555" r="32"/><g transform="translate(224,562) scale(1.46)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l2"><title>十一命 / Shiyiming</title><circle class="m-pk-halo" cx="398" cy="393" r="32"/><circle class="m-pk-ring" cx="398" cy="393" r="32"/><g transform="translate(398,400) scale(1.46)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l2"><title>渡船巷 / Duchuanxiang</title><circle class="m-pk-halo" cx="290" cy="622" r="32"/><circle class="m-pk-ring" cx="290" cy="622" r="32"/><g transform="translate(290,629) scale(1.46)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l2"><title>貓纜轉角一 / Gondola Corner 1</title><circle class="m-pk-halo" cx="735" cy="430" r="32"/><circle class="m-pk-ring" cx="735" cy="430" r="32"/><g transform="translate(735,437) scale(1.46)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l1"><title>抱子腳 / Baozijiao</title><circle class="m-pk-halo" cx="281" cy="222" r="21"/><circle class="m-pk-ring" cx="281" cy="222" r="21"/><g transform="translate(281,229) scale(1.18)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l1"><title>打鐵寮 / Datieliao</title><circle class="m-pk-halo" cx="275" cy="735" r="21"/><circle class="m-pk-ring" cx="275" cy="735" r="21"/><g transform="translate(275,742) scale(1.18)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l1"><title>渡船頭 / Duchuantou</title><circle class="m-pk-halo" cx="315" cy="809" r="21"/><circle class="m-pk-ring" cx="315" cy="809" r="21"/><g transform="translate(315,816) scale(1.18)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l1"><title>番仔公館 / Fanzaigongguan</title><circle class="m-pk-halo" cx="619" cy="804" r="21"/><circle class="m-pk-ring" cx="619" cy="804" r="21"/><g transform="translate(619,811) scale(1.18)"><path class="m-pk-stem" d="M-3.2 0 q-0.4 -6.4 3.2 -6.4 q3.6 0 3.2 6.4 z"/><path class="m-pk-cap" d="M-9.4 -6.2 q0 -7.6 9.4 -7.6 q9.4 0 9.4 7.6 z"/><g class="m-pk-dot"><circle cx="-4.2" cy="-9.4" r="1.5"/><circle cx="0.6" cy="-11.2" r="1.8"/><circle cx="4.6" cy="-9" r="1.3"/></g></g></g><g class="m-pk m-pk-l0"><title>炮子林 / Paozilin</title><circle class="m-pk-none" cx="597" cy="937" r="13"/></g></g>
 <g class="m-stations"><circle class="m-stn" cx="476" cy="258" r="9"/><circle class="m-stn" cx="994" cy="985" r="9"/><circle class="m-stn" cx="936" cy="1404" r="9"/><circle class="m-stn" cx="909" cy="506" r="9"/><circle class="m-stn" cx="735" cy="430" r="9"/><circle class="m-stn" cx="1090" cy="585" r="9"/></g>
+<g class="m-vac">
+<g class="m-vacmark"><title data-i18n="map.vac.title"></title><circle class="m-vac-halo" cx="414" cy="600" r="15"/><circle class="m-vac-ring" cx="414" cy="600" r="9.5"/><path class="m-vac-x" d="M409.6 595.5 L418.8 604.7 M418.8 595.5 L409.6 604.7"/></g>
+<g class="m-vacmark"><title data-i18n="map.vac.title"></title><circle class="m-vac-halo" cx="488" cy="611" r="15"/><circle class="m-vac-ring" cx="488" cy="611" r="9.5"/><path class="m-vac-x" d="M483.1 606.2 L492.3 615.4 M492.3 606.2 L483.1 615.4"/></g>
+<g class="m-vacmark"><title data-i18n="map.vac.title"></title><circle class="m-vac-halo" cx="546" cy="645" r="15"/><circle class="m-vac-ring" cx="546" cy="645" r="9.5"/><path class="m-vac-x" d="M541.2 640.4 L550.4 649.6 M550.4 640.4 L541.2 649.6"/></g>
+</g>
 <g class="m-pins">
 <g class="m-pin" data-stop="1" tabindex="0"><circle class="m-pin-hit" cx="663" cy="143" r="23"/><line class="m-pin-leader" x1="663" y1="168" x2="663" y2="143"/><circle class="m-pin-here" cx="663" cy="168" r="4"/><circle class="m-pin-dot" cx="663" cy="143" r="16"/><text x="663" y="148">1</text></g>
 <g class="m-pin" data-stop="2" tabindex="0"><circle class="m-pin-hit" cx="487" cy="557" r="23"/><line class="m-pin-leader" x1="480" y1="589" x2="487" y2="557"/><circle class="m-pin-here" cx="480" cy="589" r="4"/><circle class="m-pin-dot" cx="487" cy="557" r="16"/><text x="487" y="562">2</text></g>
@@ -142,8 +263,10 @@
             <span><i class="lg lg-zoo"></i> <span data-i18n="map.lg.zoo"></span></span>
             <span><i class="lg lg-cable"></i> <span data-i18n="map.lg.gondola"></span></span>
             <span><i class="lg lg-campus"></i> <span data-i18n="map.lg.campus"></span></span>
+            <span><i class="lg lg-vac"></i> <span data-i18n="map.vac.lg"></span></span>
             <span><i class="lg lg-pk"></i> <span data-i18n="map.pk.lg"></span></span>
           </div>
+          <p class="vac-note" data-i18n="map.vac.note"></p>
           <p class="pk-caveat" id="pk-caveat" data-i18n="map.pk.caveat" hidden></p>
         </div>
 
@@ -190,6 +313,21 @@
       </div>
     </section>
 
+    <section class="method section" id="method" aria-labelledby="method-title">
+      <div class="map-heading">
+        <div><p class="section-kicker" data-i18n="method.kicker"></p><h2 id="method-title" data-i18n="method.h2"></h2></div>
+      </div>
+      <div class="method-grid">
+        <article><h3 data-i18n="method.1t"></h3><p data-i18n="method.1b"></p></article>
+        <article><h3 data-i18n="method.2t"></h3><p data-i18n="method.2b"></p></article>
+        <article><h3 data-i18n="method.3t"></h3><p data-i18n="method.3b"></p></article>
+      </div>
+      <div class="method-notes">
+        <div class="method-finding"><b data-i18n="method.ft"></b><p data-i18n="method.fb"></p></div>
+        <div class="method-limit"><b data-i18n="method.lt"></b><p data-i18n="method.lb"></p></div>
+      </div>
+    </section>
+
     <section class="watch section" id="watch" aria-labelledby="watch-title">
       <div class="watch-heading">
         <div><p class="section-kicker" data-i18n="watch.kicker"></p><h2 id="watch-title" data-i18n="watch.h2"></h2></div>
@@ -206,6 +344,40 @@
         <article><span>02</span><div><h3 data-i18n="plan.2t"></h3><p data-i18n="plan.2b"></p><small data-i18n="plan.2d"></small></div></article>
         <article><span>03</span><div><h3 data-i18n="plan.3t"></h3><p data-i18n="plan.3b"></p><small data-i18n="plan.3d"></small></div></article>
         <article><span>04</span><div><h3 data-i18n="plan.4t"></h3><p data-i18n="plan.4b"></p><small data-i18n="plan.4d"></small></div></article>
+      </div>
+
+      <section class="wayfinding" aria-labelledby="wayfinding-title">
+        <div class="wayfinding-head">
+          <p class="section-kicker" data-i18n="way.kicker"></p>
+          <h3 id="wayfinding-title" data-i18n="way.h3"></h3>
+          <p data-i18n="way.body"></p>
+        </div>
+        <div class="wayfinding-grid">
+          <article>
+            <figure><img src="assets/wayfinding-sign-mockup.svg" data-i18n-alt="way.sign.alt" alt=""></figure>
+            <div><h4 data-i18n="way.sign.t"></h4><p data-i18n="way.sign.b"></p></div>
+          </article>
+          <article>
+            <figure><img src="assets/dianwei-window-decal-mockup.svg" data-i18n-alt="way.decal.alt" alt=""></figure>
+            <div><h4 data-i18n="way.decal.t"></h4><p data-i18n="way.decal.b"></p></div>
+          </article>
+        </div>
+        <p class="wayfinding-cap" data-i18n="way.cap"></p>
+      </section>
+
+      <div class="spec">
+        <div class="spec-head">
+          <p class="section-kicker" data-i18n="spec.kicker"></p>
+          <h3 data-i18n="spec.h3"></h3>
+        </div>
+        <dl class="spec-list">
+          <div><dt data-i18n="spec.1t"></dt><dd data-i18n="spec.1b"></dd></div>
+          <div><dt data-i18n="spec.2t"></dt><dd data-i18n="spec.2b"></dd></div>
+          <div><dt data-i18n="spec.3t"></dt><dd data-i18n="spec.3b"></dd></div>
+          <div><dt data-i18n="spec.4t"></dt><dd data-i18n="spec.4b"></dd></div>
+          <div><dt data-i18n="spec.5t"></dt><dd data-i18n="spec.5b"></dd></div>
+          <div class="spec-stop"><dt data-i18n="spec.6t"></dt><dd data-i18n="spec.6b"></dd></div>
+        </dl>
       </div>
     </section>
 
@@ -248,8 +420,8 @@
     <span><a class="mail-link" href="mailto:derekyt.chen@gmail.com?subject=Muzha%20Food%20Link">derekyt.chen@gmail.com</a></span>
     <span data-i18n="footer.src"></span>
   </footer>
-  <script src="i18n.js?v=7"></script>
-  <script src="ambient.js?v=8"></script>
-  <script src="script.js?v=7"></script>
+  <script src="i18n.js?v=15"></script>
+  <script src="ambient.js?v=9"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

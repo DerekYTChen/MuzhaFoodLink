@@ -34,6 +34,20 @@ STOPS=[
  (20,"四哥的店","maokong",24.967097,121.590759),
 ]
 GATE=(24.98722,121.57705); ZOO_IN=(24.99843,121.58060); MRT=(24.99833,121.57945)
+# ---------------------------------------------------------------------------
+# Shuttered units on the student strip, the fact the business case opens on.
+# BLOCK-LEVEL ONLY. Derek observed three closed storefronts on this strip; the
+# exact units were not recorded, so these three points are placed on the strip
+# between known shops and the page says so in plain words. If the addresses are
+# logged on a later walk, replace these with the true coordinates and delete
+# the "approximate" wording from map.vac.note in i18n.js. Do not add a fourth
+# point or move these to look tidier: the count is the evidence, not the spot.
+VACANCY=[
+ (24.98795,121.57470),
+ (24.98770,121.57660),
+ (24.98690,121.57810),
+]
+
 
 def rdp(P,eps):
     if len(P)<3: return P
@@ -250,7 +264,16 @@ for _ in range(1200):
         if d>44: B[0]=ax+dx/d*44;B[1]=ay+dy/d*44
         B[0]=max(R+4,min(W-R-4,B[0])); B[1]=max(R+4,min(H-R-4,B[1]))
     if not moved: break
-o=['<g class="m-pins">']
+o=['<g class="m-vac">']
+for la,lo in VACANCY:
+    vx,vy=prj(la,lo)
+    o.append(f'<g class="m-vacmark"><title data-i18n="map.vac.title"></title>'
+      f'<circle class="m-vac-halo" cx="{vx:.0f}" cy="{vy:.0f}" r="15"/>'
+      f'<circle class="m-vac-ring" cx="{vx:.0f}" cy="{vy:.0f}" r="9.5"/>'
+      f'<path class="m-vac-x" d="M{vx-4.6:.1f} {vy-4.6:.1f} L{vx+4.6:.1f} {vy+4.6:.1f} '
+      f'M{vx+4.6:.1f} {vy-4.6:.1f} L{vx-4.6:.1f} {vy+4.6:.1f}"/></g>')
+o.append('</g>')
+o.append('<g class="m-pins">')
 for n,x,y in pts:
     bx,by=bub[n]
     o.append(f'<g class="m-pin" data-stop="{n}" tabindex="0">'
@@ -287,4 +310,5 @@ for cl,ck in CL:
         h.append(f'            <li data-stop="{n}"><b>{zh}</b><span data-i18n="st.{n}"></span></li>')
     h.append('          </ol>')
 open("stops_frag.html","w").write("\n".join(h))
+print("vacancy marks",len(VACANCY))
 print("viewBox 0 0 1200",H,"| map",len("\n".join(frag)),"pins",len("\n".join(o)),"stops",len(STOPS))

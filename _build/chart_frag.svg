@@ -1,0 +1,55 @@
+<svg class="season-chart" viewBox="0 0 1000 340" role="img" aria-labelledby="sc-title sc-desc">
+  <title id="sc-title" data-i18n="season.svgTitle"></title>
+  <desc id="sc-desc" data-i18n="season.svgDesc"></desc>
+  <g class="sc-grid">
+    <line x1="46" y1="207.3" x2="982" y2="207.3"/>
+    <text class="sc-ax" x="38" y="211.3">100</text>
+    <line x1="46" y1="120.7" x2="982" y2="120.7"/>
+    <text class="sc-ax" x="38" y="124.7">200</text>
+    <line x1="46" y1="34.0" x2="982" y2="34.0"/>
+    <text class="sc-ax" x="38" y="38.0">300</text>
+  </g>
+  <g class="sc-bars">
+    <rect class="sc-bar sc-hi" x="62.4" y="68.3" width="45.2" height="225.7" rx="3"/>
+    <text class="sc-val sc-valhi" x="85.0" y="59.3">260</text>
+    <text class="sc-mon sc-monhi" x="85.0" y="316.0">1</text>
+    <rect class="sc-bar sc-hi" x="140.4" y="60.3" width="45.2" height="233.7" rx="3"/>
+    <text class="sc-val sc-valhi" x="163.0" y="51.3">270</text>
+    <text class="sc-mon sc-monhi" x="163.0" y="316.0">2</text>
+    <rect class="sc-bar" x="218.4" y="73.6" width="45.2" height="220.4" rx="3"/>
+    <text class="sc-val" x="241.0" y="64.6">254</text>
+    <text class="sc-mon" x="241.0" y="316.0">3</text>
+    <rect class="sc-bar" x="296.4" y="82.7" width="45.2" height="211.3" rx="3"/>
+    <text class="sc-val" x="319.0" y="73.7">244</text>
+    <text class="sc-mon" x="319.0" y="316.0">4</text>
+    <rect class="sc-bar" x="374.4" y="120.8" width="45.2" height="173.2" rx="3"/>
+    <text class="sc-val" x="397.0" y="111.8">200</text>
+    <text class="sc-mon" x="397.0" y="316.0">5</text>
+    <rect class="sc-bar" x="452.4" y="200.1" width="45.2" height="93.9" rx="3"/>
+    <text class="sc-val" x="475.0" y="191.1">108</text>
+    <text class="sc-mon" x="475.0" y="316.0">6</text>
+    <rect class="sc-bar" x="530.4" y="140.0" width="45.2" height="154.0" rx="3"/>
+    <text class="sc-val" x="553.0" y="131.0">178</text>
+    <text class="sc-mon" x="553.0" y="316.0">7</text>
+    <rect class="sc-bar" x="608.4" y="106.5" width="45.2" height="187.5" rx="3"/>
+    <text class="sc-val" x="631.0" y="97.5">216</text>
+    <text class="sc-mon" x="631.0" y="316.0">8</text>
+    <rect class="sc-bar" x="686.4" y="175.3" width="45.2" height="118.7" rx="3"/>
+    <text class="sc-val" x="709.0" y="166.3">137</text>
+    <text class="sc-mon" x="709.0" y="316.0">9</text>
+    <rect class="sc-bar" x="764.4" y="124.1" width="45.2" height="169.9" rx="3"/>
+    <text class="sc-val" x="787.0" y="115.1">196</text>
+    <text class="sc-mon" x="787.0" y="316.0">10</text>
+    <rect class="sc-bar" x="842.4" y="81.8" width="45.2" height="212.2" rx="3"/>
+    <text class="sc-val" x="865.0" y="72.8">245</text>
+    <text class="sc-mon" x="865.0" y="316.0">11</text>
+    <rect class="sc-bar" x="920.4" y="84.1" width="45.2" height="209.9" rx="3"/>
+    <text class="sc-val" x="943.0" y="75.1">242</text>
+    <text class="sc-mon" x="943.0" y="316.0">12</text>
+  </g>
+  <g class="sc-avg">
+    <line x1="46" y1="109.8" x2="982" y2="109.8"/>
+    <text class="sc-avgv" x="982" y="101.8">213</text>
+  </g>
+  <line class="sc-base" x1="46" y1="294.0" x2="982" y2="294.0"/>
+</svg>

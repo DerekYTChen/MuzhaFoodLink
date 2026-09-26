@@ -2,9 +2,11 @@
    No audio files: every note is synthesised live, so the music never loops
    audibly and the page stays light. Opt-in only; nothing ever autoplays.
 
-   One style: a fast, happy carnival march for the zoo end of the walk.
-   132 BPM, 2/4 oom-pah, steam-organ lead, snare backbeat, glockenspiel
-   sparkle, with an occasional slide whistle and a pair of bird chirps. */
+   One style: a slow, warm room. 72 BPM, 4/4, a four-bar loop of
+   Am9 - Fmaj7 - C - G. Felt piano, a breathing pad, upright-bass plucks,
+   a brushed shaker kept almost under the floor, and the odd vibraphone
+   bell. Long reverb, few onsets: it should read as quiet thinking, not
+   as a campaign. */
 window.MFL_AMBIENT = (function () {
   "use strict";
 
@@ -49,7 +51,7 @@ window.MFL_AMBIENT = (function () {
   }
 
   /* ---------- shared output chain ---------- */
-  var CFG = { gain: 0.52, tone: 9200, ir: 1.0, irDecay: 1.9, wet: 0.13, dry: 0.97, air: 0.014 };
+  var CFG = { gain: 0.56, tone: 6400, ir: 2.8, irDecay: 2.3, wet: 0.30, dry: 0.92, air: 0.018 };
 
   function chain(ctx, dest, cfg) {
     var master = ctx.createGain(); master.gain.value = 0;
@@ -87,178 +89,170 @@ window.MFL_AMBIENT = (function () {
   }
 
   /* =======================================================================
-     THE SCORE — carnival march, 132 BPM, 2/4 oom-pah
+     THE SCORE — 72 BPM, 4/4, four-bar loop in A minor
      ======================================================================= */
-  var BPM = 132, BEAT = 60 / BPM, BAR = 4 * BEAT;
+  var BPM = 72, BEAT = 60 / BPM, BAR = 4 * BEAT;
 
-  /* F major. root = oom (tuba), pah = off-beat chord stab. */
+  /* root = bass, fifth = second bass note, pad/voicing = sustained chord,
+     arp = the notes the felt piano walks through. */
   var CH = [
-    { root: 41, pah: [57, 60, 65] },        /* F  */
-    { root: 46, pah: [58, 62, 65] },        /* Bb */
-    { root: 48, pah: [55, 60, 64, 70] }     /* C7 */
+    { root: 45, fifth: 52, pad: [57, 60, 64, 67, 71], arp: [57, 64, 67, 71] },  /* Am9   */
+    { root: 41, fifth: 48, pad: [53, 57, 60, 64],     arp: [53, 60, 64, 69] },  /* Fmaj7 */
+    { root: 48, fifth: 55, pad: [55, 60, 64, 67],     arp: [55, 64, 67, 72] },  /* C     */
+    { root: 43, fifth: 50, pad: [55, 59, 62, 67],     arp: [50, 59, 62, 67] }   /* G     */
   ];
-  var PROG = [0, 1, 0, 2, 0, 1, 2, 0];      /* 8-bar loop */
 
-  /* Tune as [beat, midi, dur] across the 32 beats of the loop. Fixed, not
-     random, so it sounds composed; ornaments and octaves vary per pass. */
+  /* Tune as [beat, midi, dur] across the 16 beats of the loop. Fixed, so it
+     sounds composed; register and ornament vary per pass. Long notes, gaps
+     left open on purpose. */
   var MEL = [
-    [0, 72, .22], [.5, 77, .22], [1, 76, .22], [1.5, 74, .22], [2, 72, .40], [3, 69, .40],
-    [4, 70, .22], [4.5, 74, .22], [5, 77, .22], [5.5, 74, .22], [6, 70, .40], [7, 72, .40],
-    [8, 72, .22], [8.5, 77, .22], [9, 79, .22], [9.5, 77, .22], [10, 76, .40], [11, 74, .40],
-    [12, 76, .22], [12.5, 74, .22], [13, 72, .22], [13.5, 71, .22], [14, 72, .60],
-    [16, 81, .22], [16.5, 79, .22], [17, 77, .22], [17.5, 76, .22], [18, 77, .50], [19, 74, .30],
-    [20, 82, .22], [20.5, 81, .22], [21, 79, .22], [21.5, 77, .22], [22, 74, .50], [23, 70, .30],
-    [24, 72, .22], [24.5, 76, .22], [25, 79, .22], [25.5, 82, .22], [26, 81, .40], [27, 79, .40],
-    [28, 77, .30], [28.5, 76, .30], [29, 77, .70], [31, 65, .40]
+    [0, 76, 2.4], [2.75, 72, 1.0],
+    [4, 74, 2.6], [6.75, 69, 1.1],
+    [8, 72, 1.9], [10.5, 76, 1.3],
+    [12, 79, 2.2], [14.5, 74, 1.3]
   ];
 
-  function carnival(ctx, C) {
+  function room(ctx, C) {
     var barAt = 0, barIdx = 0;
 
-    /* steam-organ lead: two detuned squares, vibrato, bright but filtered */
-    function calliope(t0, midi, dur, vel) {
+    /* felt piano: soft attack, sine body plus a quiet detuned triangle,
+       lowpass that closes as the note decays so it darkens like felt. */
+    function felt(t0, midi, dur, vel, pan) {
       var f = mtof(midi), g = ctx.createGain();
       var lp = ctx.createBiquadFilter();
-      lp.type = "lowpass"; lp.frequency.value = 2700; lp.Q.value = 1.1;
-      g.connect(lp); C.panTo(lp, rnd(-0.16, 0.16));
-      var vib = ctx.createOscillator(), vibG = ctx.createGain();
-      vib.frequency.value = 5.6; vibG.gain.value = f * 0.0032;
-      vib.connect(vibG); vib.start(t0); vib.stop(t0 + dur + 0.2);
-      [[-7, 0.5], [7, 0.5], [1200, 0.13]].forEach(function (v) {
-        var o = ctx.createOscillator();
-        o.type = v[0] === 1200 ? "sine" : "square";
-        o.frequency.value = f; o.detune.value = v[0] === 1200 ? 1200 : v[0];
-        vibG.connect(o.frequency);
-        var vg = ctx.createGain(); vg.gain.value = v[1];
-        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + dur + 0.16);
+      lp.type = "lowpass"; lp.Q.value = 0.6;
+      lp.frequency.setValueAtTime(Math.min(5200, f * 7), t0);
+      lp.frequency.exponentialRampToValueAtTime(Math.max(420, f * 2.2), t0 + dur);
+      g.connect(lp); C.panTo(lp, pan);
+      [["sine", 0, 1], ["triangle", 6, 0.20], ["sine", -5, 0.34]].forEach(function (v) {
+        var o = ctx.createOscillator(); o.type = v[0];
+        o.frequency.value = f; o.detune.value = v[1];
+        var vg = ctx.createGain(); vg.gain.value = v[2];
+        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + dur + 0.4);
       });
+      /* a breath of key noise, the felt hitting the string */
+      var s = ctx.createBufferSource(); s.buffer = C.noise;
+      s.playbackRate.value = 0.9;
+      var hp = ctx.createBiquadFilter(); hp.type = "bandpass";
+      hp.frequency.value = f * 3; hp.Q.value = 0.9;
+      var sg = ctx.createGain();
+      s.connect(hp); hp.connect(sg); C.panTo(sg, pan);
+      sg.gain.setValueAtTime(0, t0);
+      sg.gain.linearRampToValueAtTime(vel * 0.16, t0 + 0.012);
+      sg.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.14);
+      s.start(t0, rnd(0, 4)); s.stop(t0 + 0.2);
+
       g.gain.setValueAtTime(0, t0);
-      g.gain.linearRampToValueAtTime(vel, t0 + 0.008);
-      g.gain.setValueAtTime(vel, t0 + Math.max(0.02, dur - 0.05));
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur + 0.12);
+      g.gain.linearRampToValueAtTime(vel, t0 + 0.035);
+      g.gain.exponentialRampToValueAtTime(vel * 0.28, t0 + dur * 0.55);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur + 0.35);
     }
 
-    /* oom: tuba downbeat */
-    function oom(t0, midi, vel) {
+    /* pad: two slightly detuned saws per note through a filter that opens
+       and closes across the bar, so the chord breathes rather than sits. */
+    function pad(t0, notes, dur, vel) {
+      var lp = ctx.createBiquadFilter();
+      lp.type = "lowpass"; lp.Q.value = 0.7;
+      lp.frequency.setValueAtTime(560, t0);
+      lp.frequency.linearRampToValueAtTime(1150, t0 + dur * 0.45);
+      lp.frequency.linearRampToValueAtTime(600, t0 + dur);
+      var g = ctx.createGain(); g.connect(lp); C.panTo(lp, rnd(-0.1, 0.1));
+      notes.forEach(function (m) {
+        var f = mtof(m);
+        [-6, 6].forEach(function (dt) {
+          var o = ctx.createOscillator(); o.type = "sawtooth";
+          o.frequency.value = f; o.detune.value = dt;
+          var vg = ctx.createGain(); vg.gain.value = 0.5 / notes.length;
+          o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + dur + 0.6);
+        });
+      });
+      g.gain.setValueAtTime(0, t0);
+      g.gain.linearRampToValueAtTime(vel, t0 + dur * 0.3);
+      g.gain.setValueAtTime(vel, t0 + dur * 0.62);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur + 0.5);
+    }
+
+    /* upright bass: short round pluck, a little string in the attack */
+    function bass(t0, midi, vel) {
       var f = mtof(midi), g = ctx.createGain();
-      C.panTo(g, 0);
-      [["sine", 1], ["triangle", 0.34]].forEach(function (v) {
+      var lp = ctx.createBiquadFilter();
+      lp.type = "lowpass"; lp.frequency.value = 340; lp.Q.value = 1.4;
+      g.connect(lp); C.panTo(lp, -0.06);
+      [["sine", 1], ["triangle", 0.28]].forEach(function (v) {
         var o = ctx.createOscillator(); o.type = v[0]; o.frequency.value = f;
         var vg = ctx.createGain(); vg.gain.value = v[1];
-        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + 0.34);
+        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + 1.5);
       });
       g.gain.setValueAtTime(0, t0);
-      g.gain.linearRampToValueAtTime(vel, t0 + 0.012);
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.30);
+      g.gain.linearRampToValueAtTime(vel, t0 + 0.02);
+      g.gain.exponentialRampToValueAtTime(vel * 0.2, t0 + 0.5);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.3);
     }
 
-    /* pah: clipped chord stab on the off beat */
-    function pah(t0, notes, vel, pan) {
-      var lp = ctx.createBiquadFilter();
-      lp.type = "lowpass"; lp.frequency.value = 1900; lp.Q.value = 0.7;
-      var g = ctx.createGain(); g.connect(lp); C.panTo(lp, pan);
-      notes.forEach(function (m) {
-        var o = ctx.createOscillator(); o.type = "square";
-        o.frequency.value = mtof(m);
-        var vg = ctx.createGain(); vg.gain.value = 0.3;
-        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + 0.22);
-      });
-      g.gain.setValueAtTime(0, t0);
-      g.gain.linearRampToValueAtTime(vel, t0 + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.18);
-    }
-
-    function noiseHit(t0, hz, dur, vel, pan, type) {
+    /* brushed shaker, wide and very quiet: texture, not a beat */
+    function brush(t0, vel, pan) {
       var s = ctx.createBufferSource(); s.buffer = C.noise;
-      s.playbackRate.value = 1.6;
-      var f = ctx.createBiquadFilter();
-      f.type = type || "highpass"; f.frequency.value = hz; f.Q.value = 0.8;
+      s.playbackRate.value = rnd(1.1, 1.35);
+      var bp = ctx.createBiquadFilter();
+      bp.type = "bandpass"; bp.frequency.value = rnd(3800, 5600); bp.Q.value = 0.7;
       var g = ctx.createGain();
-      s.connect(f); f.connect(g); C.panTo(g, pan);
+      s.connect(bp); bp.connect(g); C.panTo(g, pan);
       g.gain.setValueAtTime(0, t0);
-      g.gain.linearRampToValueAtTime(vel, t0 + 0.004);
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-      s.start(t0, rnd(0, 4)); s.stop(t0 + dur + 0.05);
+      g.gain.linearRampToValueAtTime(vel, t0 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.26);
+      s.start(t0, rnd(0, 4)); s.stop(t0 + 0.35);
     }
-    function snare(t0, vel) { noiseHit(t0, 950, 0.10, vel, 0, "highpass"); }
-    function hat(t0, vel, pan) { noiseHit(t0, 6400, 0.035, vel, pan, "highpass"); }
 
-    /* glockenspiel sparkle */
-    function glock(t0, midi, vel) {
+    /* vibraphone bell: sine partials, long tail, used sparingly */
+    function bell(t0, midi, vel) {
       var f = mtof(midi), g = ctx.createGain();
-      C.panTo(g, rnd(-0.62, 0.62));
-      [[1, 0.5, 1.2], [2.76, 0.16, 0.7], [5.4, 0.05, 0.4]].forEach(function (p) {
+      C.panTo(g, rnd(-0.5, 0.5));
+      [[1, 0.5, 3.4], [4.0, 0.10, 1.8], [9.2, 0.03, 0.9]].forEach(function (p) {
         var o = ctx.createOscillator(); o.type = "sine";
         o.frequency.value = f * p[0];
-        var vg = ctx.createGain(); vg.gain.value = 0;
+        var vg = ctx.createGain();
         vg.gain.setValueAtTime(0, t0);
-        vg.gain.linearRampToValueAtTime(p[1] * vel, t0 + 0.004);
+        vg.gain.linearRampToValueAtTime(p[1] * vel, t0 + 0.02);
         vg.gain.exponentialRampToValueAtTime(0.0001, t0 + p[2]);
-        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + p[2] + 0.05);
+        o.connect(vg); vg.connect(g); o.start(t0); o.stop(t0 + p[2] + 0.1);
       });
-      g.gain.value = 1;
-    }
-
-    /* slide whistle swoop */
-    function whistle(t0) {
-      var o = ctx.createOscillator(); o.type = "sine";
-      var g = ctx.createGain(); o.connect(g); C.panTo(g, rnd(-0.5, 0.5));
-      o.frequency.setValueAtTime(880, t0);
-      o.frequency.exponentialRampToValueAtTime(2300, t0 + 0.26);
-      o.frequency.exponentialRampToValueAtTime(1040, t0 + 0.55);
-      g.gain.setValueAtTime(0, t0);
-      g.gain.linearRampToValueAtTime(0.055, t0 + 0.05);
-      g.gain.setValueAtTime(0.055, t0 + 0.4);
-      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.6);
-      o.start(t0); o.stop(t0 + 0.65);
-    }
-
-    /* two quick bird chirps, the zoo in the mix */
-    function chirp(t0) {
-      for (var k = 0; k < 2; k++) {
-        var t = t0 + k * 0.12, o = ctx.createOscillator(), g = ctx.createGain();
-        o.type = "sine"; o.connect(g); C.panTo(g, rnd(-0.7, 0.7));
-        o.frequency.setValueAtTime(rnd(2100, 2500), t);
-        o.frequency.exponentialRampToValueAtTime(rnd(3000, 3600), t + 0.05);
-        g.gain.setValueAtTime(0, t);
-        g.gain.linearRampToValueAtTime(0.03, t + 0.008);
-        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
-        o.start(t); o.stop(t + 0.12);
-      }
+      /* slow tremolo, the vibraphone fan */
+      var trem = ctx.createOscillator(), tg = ctx.createGain();
+      trem.frequency.value = 4.2; tg.gain.value = 0.22;
+      g.gain.value = 0.78; trem.connect(tg); tg.connect(g.gain);
+      trem.start(t0); trem.stop(t0 + 3.6);
     }
 
     function bar(t0, idx) {
-      var b = idx % 8, loop = Math.floor(idx / 8);
-      var ch = CH[PROG[b]];
+      var b = idx % 4, loop = Math.floor(idx / 4);
+      var ch = CH[b];
 
-      /* oom-pah engine */
-      oom(t0, ch.root, 0.46);
-      oom(t0 + 2 * BEAT, ch.root + (b % 2 ? 7 : 12), 0.36);
-      pah(t0 + BEAT, ch.pah, 0.22, -0.46);
-      pah(t0 + 3 * BEAT, ch.pah, 0.20, 0.46);
+      pad(t0, ch.pad, BAR, 0.055);
+      bass(t0, ch.root, 0.30);
+      if (b !== 2) bass(t0 + 2.5 * BEAT, ch.fifth, 0.18);
 
-      /* backbeat snare, eighth-note hats */
-      snare(t0 + BEAT, 0.16);
-      snare(t0 + 3 * BEAT, 0.14);
-      for (var e = 0; e < 8; e++) hat(t0 + e * BEAT * 0.5, e % 2 ? 0.036 : 0.062, e % 2 ? 0.52 : -0.38);
+      /* piano figure: four notes, loosely placed, never metronomic */
+      ch.arp.forEach(function (m, i) {
+        var t = t0 + [0, 1.5, 2.25, 3.25][i] * BEAT + rnd(-0.02, 0.03);
+        var oct = loop % 3 === 2 && i > 1 ? 12 : 0;
+        felt(t, m + oct, rnd(1.5, 2.3), 0.085 - i * 0.008, rnd(-0.3, 0.3));
+      });
+
+      /* shaker on the two soft beats only */
+      brush(t0 + BEAT, 0.013, 0.42);
+      brush(t0 + 3 * BEAT, 0.010, -0.36);
 
       /* melody for this bar */
       MEL.forEach(function (n) {
         if (n[0] < b * 4 || n[0] >= b * 4 + 4) return;
         var t = t0 + (n[0] - b * 4) * BEAT;
-        var m = n[1] + (loop % 2 === 1 && b >= 4 ? 12 : 0);
-        if (m > 93) m -= 12;
-        calliope(t, m, n[2], 0.17);
-        if (n[2] >= 0.4) glock(t, m + 12, 0.12);
-        if (loop % 2 === 1 && Math.random() < 0.25) calliope(t - 0.055, m - 1, 0.05, 0.08);
+        var m = n[1] - (loop % 3 === 1 ? 12 : 0);
+        felt(t, m, n[2], 0.105, rnd(-0.14, 0.14));
       });
 
-      /* bar 8: snare roll back into the top */
-      if (b === 7) {
-        for (var r = 0; r < 8; r++) snare(t0 + 2 * BEAT + r * BEAT * 0.25, 0.07 + r * 0.012);
-      }
-      if (b === 3 && Math.random() < 0.4) whistle(t0 + 2 * BEAT);
-      if (b === 5 && Math.random() < 0.35) chirp(t0 + 3 * BEAT);
+      /* one bell per loop at most, on the turn back to the top */
+      if (b === 3 && Math.random() < 0.55) bell(t0 + 2 * BEAT, pick([81, 84, 88]), 0.055);
+      if (b === 1 && Math.random() < 0.22) bell(t0 + 3 * BEAT, pick([76, 79]), 0.04);
     }
 
     return {
@@ -271,7 +265,7 @@ window.MFL_AMBIENT = (function () {
 
   function build(ctx, dest) {
     var C = chain(ctx, dest, CFG);
-    var v = carnival(ctx, C);
+    var v = room(ctx, C);
     return { master: C.master, gain: CFG.gain, seed: v.seed, schedule: v.schedule,
              startSources: C.startSources, stopSources: C.stopSources };
   }

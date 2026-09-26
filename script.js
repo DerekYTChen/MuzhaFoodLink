@@ -38,6 +38,10 @@
       var k = el.getAttribute("data-i18n-title");
       if (k in d) el.setAttribute("title", d[k].replace(/<[^>]+>/g, ""));
     });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-alt");
+      if (k in d) el.setAttribute("alt", d[k].replace(/<[^>]+>/g, ""));
+    });
     document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
       var k = el.getAttribute("data-i18n-aria-label");
       if (k in d) el.setAttribute("aria-label", d[k]);

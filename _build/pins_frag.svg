@@ -1,3 +1,8 @@
+<g class="m-vac">
+<g class="m-vacmark"><title data-i18n="map.vac.title"></title><circle class="m-vac-halo" cx="414" cy="600" r="15"/><circle class="m-vac-ring" cx="414" cy="600" r="9.5"/><path class="m-vac-x" d="M409.6 595.5 L418.8 604.7 M418.8 595.5 L409.6 604.7"/></g>
+<g class="m-vacmark"><title data-i18n="map.vac.title"></title><circle class="m-vac-halo" cx="488" cy="611" r="15"/><circle class="m-vac-ring" cx="488" cy="611" r="9.5"/><path class="m-vac-x" d="M483.1 606.2 L492.3 615.4 M492.3 606.2 L483.1 615.4"/></g>
+<g class="m-vacmark"><title data-i18n="map.vac.title"></title><circle class="m-vac-halo" cx="546" cy="645" r="15"/><circle class="m-vac-ring" cx="546" cy="645" r="9.5"/><path class="m-vac-x" d="M541.2 640.4 L550.4 649.6 M550.4 640.4 L541.2 649.6"/></g>
+</g>
 <g class="m-pins">
 <g class="m-pin" data-stop="1" tabindex="0"><circle class="m-pin-hit" cx="663" cy="143" r="23"/><line class="m-pin-leader" x1="663" y1="168" x2="663" y2="143"/><circle class="m-pin-here" cx="663" cy="168" r="4"/><circle class="m-pin-dot" cx="663" cy="143" r="16"/><text x="663" y="148">1</text></g>
 <g class="m-pin" data-stop="2" tabindex="0"><circle class="m-pin-hit" cx="487" cy="557" r="23"/><line class="m-pin-leader" x1="480" y1="589" x2="487" y2="557"/><circle class="m-pin-here" cx="480" cy="589" r="4"/><circle class="m-pin-dot" cx="487" cy="557" r="16"/><text x="487" y="562">2</text></g>
