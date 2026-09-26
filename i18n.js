@@ -1,9 +1,9 @@
 /* Muzha Food Link — bilingual dictionary (EN / 繁體中文) */
 window.MFL_VIDEOS = [
-  /* Three kept of eight surveyed. Chosen because each one actually shows the
-     corridor this proposal is about: the Muzha shortlist, the shops beside the
-     zoo, and the strip itself on an ordinary Saturday. All are public uploads
-     by their creators and are linked, not embedded or claimed. */
+  /* Three public videos selected because each actually shows the corridor this
+     proposal is about: the Muzha shortlist, the shops beside the zoo, and the
+     strip itself on an ordinary Saturday. They are linked, not embedded or
+     claimed. */
   { id: "o-2Ih1w_RCM", zh: "木柵口袋名單！！狗哥都愛吃的蛋餅！？政大鵝肉飯！只開兩天的最強豆花店來啦！！！", en: "Muzha shortlist: egg crepes, NCCU goose rice, and a tofu-pudding shop open two days a week", ch: "A/DA 阿達" },
   { id: "1DNJ2SSmtuc", zh: "木柵動物園周邊必吃美食推薦！連政大學生都愛不釋手！", en: "Must-eat spots around Taipei Zoo that NCCU students keep going back to", ch: "ReadyGo 台灣旅圖" },
   { id: "Qwmw0jWqtA0", zh: "Taipei／台北文山：政大商圈星期六現況", en: "Walking the NCCU shopping strip on a Saturday", ch: "Taiwan Wanderer" }
@@ -134,7 +134,7 @@ en: {
   "watch.h2": "Scan, watch,<br><em>then come hungry.</em>",
   "watch.sub": "Local creators have already filmed this food strip. Point a phone camera at a code to open the video. The shared LINE account will carry clips like these next to wait times and pre-orders.",
   "watch.open": "Watch on YouTube",
-  "watch.foot": "All eight videos are public YouTube uploads by their respective creators; they are linked here for reference and are not affiliated with this pilot.",
+  "watch.foot": "These three videos are public YouTube uploads by their respective creators; they are linked here for reference and are not affiliated with this pilot.",
   "plan.kicker": "04 / A SIX-WEEK, LOW-RISK PILOT",
   "plan.h2": "Make one route<br><em>easy to choose.</em>",
   "plan.1t": "Listen", "plan.1b": "Sit down with restaurant owners, residents, the Wanhsing Village Chief and prospective visitors. Learn menus, access needs and realistic winter hours.", "plan.1d": "SEP–OCT 2026",
@@ -284,7 +284,7 @@ zh: {
   "watch.h2": "掃碼、看片，<br><em>再空著肚子來。</em>",
   "watch.sub": "在地創作者其實早就拍過這一帶。用手機相機對著 QR code 就能打開影片。未來共用的 LINE 官方帳號也會放這類短片，旁邊就是候位狀況與預訂。",
   "watch.open": "在 YouTube 觀看",
-  "watch.foot": "以上八部影片皆為各創作者公開上傳於 YouTube 的內容，此處僅作為參考連結，與本試辦計畫無合作關係。",
+  "watch.foot": "以上三部影片皆為各創作者公開上傳於 YouTube 的內容，此處僅作為參考連結，與本試辦計畫無合作關係。",
   "plan.kicker": "04 / 一個六週、低風險的試辦",
   "plan.h2": "讓一條路<br><em>變得容易被選擇。</em>",
   "plan.1t": "先聽", "plan.1b": "坐下來和店家、住戶、萬興里里長以及可能的遊客談。了解菜單、動線需求，以及寒假實際能開的時間。", "plan.1d": "2026 年 9–10 月",
